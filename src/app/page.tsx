@@ -1,65 +1,131 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import { COMPANY } from "@/lib/constants";
+import { faqItems } from "@/components/sections/FAQSection";
+
+import HeroSection from "@/components/sections/HeroSection";
+import TrustBar from "@/components/sections/TrustBar";
+import PainPointsSection from "@/components/sections/PainPointsSection";
+import PlanosSection from "@/components/sections/PlanosSection";
+import ProcessSection from "@/components/sections/ProcessSection";
+import DifferentialsSection from "@/components/sections/DifferentialsSection";
+import CTABanner from "@/components/sections/CTABanner";
+import CoverageSection from "@/components/sections/CoverageSection";
+import TrustGuaranteeSection from "@/components/sections/TrustGuaranteeSection";
+import GalleryPreviewSection from "@/components/sections/GalleryPreviewSection";
+import FAQSection from "@/components/sections/FAQSection";
+import ContactFormSection from "@/components/sections/ContactFormSection";
+
+/* ── Metadata ───────────────────────────────────── */
+
+export const metadata: Metadata = {
+  title: "Casas Prefabricadas en Neuquén | Viviendas Roble",
+  description:
+    "Viviendas Roble: +40 años construyendo casas prefabricadas en Neuquén y Patagonia. +15.000 casas entregadas. Certificado PROCREAR. Solicitá tu presupuesto gratis.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "Casas Prefabricadas en Neuquén — Viviendas Roble",
+    description:
+      "Construcción industrializada de diseño. Entrega a tiempo, precio cerrado, acompañamiento completo.",
+    type: "website",
+    locale: "es_AR",
+  },
+  keywords: [
+    "casas prefabricadas Neuquén",
+    "casas modulares Neuquén",
+    "construcción en seco Neuquén",
+    "steel frame Neuquén",
+    "wood frame Neuquén",
+    "casas prefabricadas Cipolletti",
+    "casas prefabricadas General Roca",
+    "casas industrializadas Patagonia",
+    "viviendas PROCREAR Neuquén",
+    "construcción rápida Neuquén",
+  ],
+};
+
+/* ── JSON-LD schemas ─────────────────────────────── */
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "ConstructionCompany"],
+  name: COMPANY.name,
+  description:
+    "Empresa familiar de construcción industrializada con más de 40 años de trayectoria. +15.000 casas entregadas en Neuquén, Río Negro, La Pampa y Chubut.",
+  url: "https://viviendasroble.com",
+  telephone: "+540299440353",
+  email: COMPANY.email,
+  foundingDate: String(COMPANY.founded),
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Aguado 2345",
+    addressLocality: "Neuquén",
+    postalCode: COMPANY.postalCode,
+    addressCountry: "AR",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: -38.9516,
+    longitude: -68.0591,
+  },
+  areaServed: [
+    { "@type": "State", name: "Neuquén" },
+    { "@type": "State", name: "Río Negro" },
+    { "@type": "State", name: "La Pampa" },
+    { "@type": "State", name: "Chubut" },
+  ],
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "10:00",
+      closes: "18:00",
+    },
+  ],
+  hasCredential: COMPANY.certificacion,
+  sameAs: [COMPANY.instagram],
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a,
+    },
+  })),
+};
+
+/* ── Page ────────────────────────────────────────── */
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
+      <main>
+        <HeroSection />
+        <TrustBar />
+        <PainPointsSection />
+        <PlanosSection />
+        <ProcessSection />
+        <DifferentialsSection />
+        <CTABanner />
+        <CoverageSection />
+        <TrustGuaranteeSection />
+        <GalleryPreviewSection />
+        <FAQSection />
+        <ContactFormSection />
       </main>
-    </div>
+    </>
   );
 }
