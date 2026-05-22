@@ -40,7 +40,7 @@ export default function HeroSection() {
 
             {/* H1 */}
             <h1 className="font-serif text-[44px] sm:text-5xl md:text-6xl lg:text-[64px] font-semibold text-white leading-[1.05] mb-6">
-              Viviendas industrializadas en Neuquén y Río Negro,{" "}
+              Tu casa propia en Neuquén y Río Negro,{" "}
               <span className="text-roble-gold">con precio cerrado y entrega planificada.</span>
             </h1>
 
