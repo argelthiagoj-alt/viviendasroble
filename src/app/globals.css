@@ -2,22 +2,25 @@
 
 /* Brand tokens — Viviendas Roble */
 @theme {
-  --color-roble-dark:       #1C2B2B;
-  --color-roble-dark-hover: #243535;
+  --color-roble-dark:       #1F1D1A;
+  --color-roble-dark-hover: #2A2723;
   --color-roble-gold:       #C8A86B;
   --color-roble-gold-light: #EDD9A3;
-  --color-roble-cream:      #F5F3EE;
-  --color-roble-beige:      #E8E4DE;
-  --color-roble-text:       #1A1A1A;
-  --color-roble-muted:      #6B6B6B;
+  --color-roble-brown:      #8A5A32;
+  --color-roble-brown-deep: #4A2F1B;
+  --color-roble-green:      #6F7A5A;
+  --color-roble-cream:      #F7F2EA;
+  --color-roble-beige:      #E8DDCC;
+  --color-roble-text:       #1F1D1A;
+  --color-roble-muted:      #6B655B;
 
   --font-sans:  var(--font-inter);
   --font-serif: var(--font-playfair);
 }
 
 :root {
-  --background: #F5F3EE;
-  --foreground: #1A1A1A;
+  --background: #F7F2EA;
+  --foreground: #1F1D1A;
 }
 
 body {

@@ -1,43 +1,55 @@
 export type GalleryImage = {
   src: string;
   alt: string;
-  location: string;
 };
 
 export const galleryImages: GalleryImage[] = [
   {
-    src: "/assets/gallery/Casa21-scaled.jpg",
-    alt: "Casa prefabricada Viviendas Roble — Modelo familiar entregado en Neuquén",
-    location: "Neuquén Capital",
+    src: "/assets/gallery/hero-casa-roble.jpeg",
+    alt: "Vivienda industrializada Viviendas Roble — fachada con detalles cálidos",
   },
   {
-    src: "/assets/gallery/002-3-scaled.jpg",
-    alt: "Vivienda industrializada Roble — Vista exterior terminada",
-    location: "Neuquén",
+    src: "/assets/gallery/casa-roble-2.jpeg",
+    alt: "Vivienda Roble entregada en Patagonia — fachada con revestimiento mixto",
   },
   {
-    src: "/assets/gallery/Opcion-B1-scaled.jpg",
-    alt: "Viviendas Roble — Opción de revestimiento exterior B",
-    location: "Patagonia",
+    src: "/assets/gallery/casa-3.jpeg",
+    alt: "Casa industrializada Roble con revestimiento de madera y zócalo de piedra",
   },
   {
-    src: "/assets/gallery/009-C.jpg",
-    alt: "Viviendas Roble — Casa prefabricada con galería",
-    location: "Neuquén",
+    src: "/assets/gallery/casa-4.jpeg",
+    alt: "Vivienda Roble con galería techada y revestimiento de madera natural",
   },
   {
-    src: "/assets/gallery/0028_cambio-scaled.jpg",
-    alt: "Viviendas Roble — Proyecto residencial entregado",
-    location: "Río Negro",
+    src: "/assets/gallery/casa-5.jpeg",
+    alt: "Casa Roble con frente de piedra y madera, entorno patagónico",
   },
   {
-    src: "/assets/gallery/004-1-1-e1680786186484.jpg",
-    alt: "Viviendas Roble — Fachada principal casa modular",
-    location: "Neuquén",
+    src: "/assets/gallery/casa-6.jpeg",
+    alt: "Vivienda Roble con techo a dos aguas y revestimiento cálido",
   },
   {
-    src: "/assets/gallery/29.jpg",
-    alt: "Viviendas Roble — Vivienda industrializada Patagonia",
-    location: "Cipolletti",
+    src: "/assets/gallery/casa-7.jpeg",
+    alt: "Casa Roble con fachada blanca y detalles de madera",
+  },
+  {
+    src: "/assets/gallery/casa-8.jpeg",
+    alt: "Vivienda industrializada Roble con galería amplia",
+  },
+  {
+    src: "/assets/gallery/casa-9.jpeg",
+    alt: "Casa Roble compacta con terminaciones premium",
+  },
+  {
+    src: "/assets/gallery/casa-10.jpeg",
+    alt: "Vivienda Roble en terreno patagónico, vista exterior",
+  },
+  {
+    src: "/assets/gallery/casa-11.jpeg",
+    alt: "Casa Roble con revestimiento de madera y entorno verde",
+  },
+  {
+    src: "/assets/gallery/casa-12.png",
+    alt: "Dos viviendas Roble idénticas con techo a dos aguas y revestimiento blanco con madera",
   },
 ];

@@ -15,7 +15,7 @@ export default function ModelCard({ model }: Props) {
             src={model.previewImage}
             alt={`Plano arquitectónico del modelo ${model.name} — ${model.areaLabel} — Viviendas Roble`}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            className="object-contain p-4 transition-transform duration-500 group-hover:scale-[1.03]"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             loading="lazy"
           />
@@ -30,9 +30,8 @@ export default function ModelCard({ model }: Props) {
           </span>
         )}
 
-        {/* Area — bottom-right overlay */}
-        <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
-        <span className="absolute bottom-3 right-4 font-serif text-white text-xl font-semibold drop-shadow">
+        {/* Area — bottom-right */}
+        <span className="absolute bottom-3 right-4 font-serif text-roble-text/80 text-xl font-semibold">
           {model.areaLabel}
         </span>
       </div>

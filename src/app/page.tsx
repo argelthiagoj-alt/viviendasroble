@@ -12,6 +12,8 @@ import CTABanner from "@/components/sections/CTABanner";
 import CoverageSection from "@/components/sections/CoverageSection";
 import TrustGuaranteeSection from "@/components/sections/TrustGuaranteeSection";
 import GalleryPreviewSection from "@/components/sections/GalleryPreviewSection";
+import ClimateSection from "@/components/sections/ClimateSection";
+import ComparisonSection from "@/components/sections/ComparisonSection";
 import FAQSection from "@/components/sections/FAQSection";
 import ContactFormSection from "@/components/sections/ContactFormSection";
 
@@ -116,13 +118,15 @@ export default function Home() {
         <HeroSection />
         <TrustBar />
         <PainPointsSection />
+        <GalleryPreviewSection />
         <PlanosSection />
+        <ClimateSection />
+        <ComparisonSection />
         <ProcessSection />
         <DifferentialsSection />
-        <CTABanner />
-        <CoverageSection />
         <TrustGuaranteeSection />
-        <GalleryPreviewSection />
+        <CoverageSection />
+        <CTABanner />
         <FAQSection />
         <ContactFormSection />
       </main>

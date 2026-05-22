@@ -2,7 +2,17 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:viviendasroble.com)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(ls \"C:/Users/argel/Documents/imagenes para webs/Viviendas Roble/assets\")",
+      "PowerShell($src = \"C:\\\\Users\\\\argel\\\\Documents\\\\imagenes para webs\\\\Viviendas Roble\\\\assets\"; $dst = \"C:\\\\Users\\\\argel\\\\casas-premium\\\\public\\\\assets\\\\gallery\"; Copy-Item \"$src\\\\WhatsApp Image 2026-05-22 at 12.10.44.jpeg\" \"$dst\\\\hero-casa-roble.jpeg\"; Copy-Item \"$src\\\\WhatsApp Image 2026-05-22 at 12.10.45.jpeg\" \"$dst\\\\casa-roble-2.jpeg\"; foreach \\($n in 3,4,5,6,7,8,9,10\\) { Copy-Item \"$src\\\\casa$n.jpeg\" \"$dst\\\\casa-$n.jpeg\" }; Copy-Item \"$src\\\\casa11jpeg.jpeg\" \"$dst\\\\casa-11.jpeg\"; Get-ChildItem $dst)",
+      "Bash(npx --no-install next build)",
+      "PowerShell($old = @\\(\"002-3-scaled.jpg\",\"0028_cambio-scaled.jpg\",\"004-1-1-e1680786186484.jpg\",\"009-C.jpg\",\"29.jpg\",\"Casa21-scaled.jpg\",\"Opcion-B1-scaled.jpg\"\\); foreach \\($f in $old\\) { Remove-Item \"C:\\\\Users\\\\argel\\\\casas-premium\\\\public\\\\assets\\\\gallery\\\\$f\" -ErrorAction SilentlyContinue }; Get-ChildItem \"C:\\\\Users\\\\argel\\\\casas-premium\\\\public\\\\assets\\\\gallery\" | Select-Object Name)",
+      "Bash(file /tmp/521b49c0-815e-4747-ac64-ec20b2793ea1.tmp /tmp/822a07c6-e57e-4d3a-ab71-f5e565ae5c12.tmp 2>&1)",
+      "Bash(cp /tmp/12c48662-90d5-4b86-b1c1-b88544862c84.tmp \"C:/Users/argel/casas-premium/public/assets/gallery/casa-12.webp\" && ls -la \"C:/Users/argel/casas-premium/public/assets/gallery/casa-12.webp\")",
+      "Bash(rm \"C:/Users/argel/casas-premium/public/assets/gallery/casa-12.webp\" && cp \"C:/Users/argel/Documents/imagenes para webs/Viviendas Roble/assets/casa12.png\" \"C:/Users/argel/casas-premium/public/assets/gallery/casa-12.png\" && ls -la \"C:/Users/argel/casas-premium/public/assets/gallery/casa-12.png\")",
+      "Bash(npx --no-install pdf-img-convert --version)",
+      "Bash(npm install *)",
+      "Bash(node scripts/pdf-to-png.mjs)"
     ]
   }
 }
