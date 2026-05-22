@@ -9,11 +9,12 @@ export default function CTABanner() {
           El primer paso es gratis
         </p>
         <h2 className="font-serif text-3xl md:text-4xl font-semibold text-roble-text leading-snug mb-5">
-          ¿Tenés terreno y no sabés por dónde empezar?
+          ¿Querés construir tu casa y no sabés por dónde empezar?
         </h2>
         <p className="text-roble-muted text-lg leading-relaxed mb-10 max-w-xl mx-auto">
-          Te ayudamos a dar el primer paso. Contanos tu situación y te damos
-          orientación sin cargo y sin presión.
+          Te acompañamos desde la elección del modelo hasta la planificación de
+          tu casa. Consultá tu presupuesto para construir una casa con precio
+          cerrado, sin cargo ni compromiso.
         </p>
         <a
           href={WA_PRESUPUESTO}

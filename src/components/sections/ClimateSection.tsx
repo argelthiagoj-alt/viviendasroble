@@ -38,11 +38,12 @@ export default function ClimateSection() {
             id="clima-heading"
             className="font-serif text-4xl md:text-5xl font-semibold text-roble-text leading-[1.15] mb-5"
           >
-            Diseñadas para el clima patagónico
+            Casas modernas, funcionales y adaptadas a la vida en Patagonia
           </h2>
           <p className="text-roble-muted text-lg leading-relaxed">
             Calidad, durabilidad y confort térmico pensados para los inviernos
-            de Neuquén y Río Negro.
+            de Neuquén y Río Negro. Casas para vivir todo el año, no solo para
+            mirar en un plano.
           </p>
         </AnimateOnScroll>
 

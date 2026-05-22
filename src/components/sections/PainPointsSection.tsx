@@ -51,17 +51,20 @@ export default function PainPointsSection() {
       <div className="max-w-6xl mx-auto">
         <AnimateOnScroll className="text-center max-w-2xl mx-auto mb-16">
           <p className="text-[11px] tracking-[0.18em] text-roble-gold uppercase font-semibold mb-4">
-            Por qué nos eligen
+            Construir tu casa, sin sorpresas
           </p>
           <h2
             id="pain-heading"
             className="font-serif text-4xl md:text-5xl font-semibold text-roble-text leading-[1.15] mb-5"
           >
-            La obra tradicional tiene un problema.{" "}
+            Construir una casa por obra tradicional tiene un problema.{" "}
             <span className="italic">Varios.</span>
           </h2>
           <p className="text-roble-muted text-lg leading-relaxed">
-            Si alguna vez intentaste construir de forma convencional, ya sabés de qué hablamos.
+            Si alguna vez quisiste construir una casa en Neuquén o Río Negro,
+            ya sabés de qué hablamos. Por eso ofrecemos una alternativa clara
+            para quienes buscan construir una vivienda con plazos definidos y
+            precio cerrado.
           </p>
         </AnimateOnScroll>
 

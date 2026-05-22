@@ -37,10 +37,16 @@ export const NAV_LINKS = [
 ];
 
 export const CITIES = [
-  { name: "Neuquén Capital", href: "/contacto" },
-  { name: "Cipolletti", href: "/contacto" },
-  { name: "General Roca", href: "/contacto" },
-  { name: "Centenario", href: "/contacto" },
-  { name: "Plottier", href: "/contacto" },
-  { name: "Rincón de los Sauces", href: "/contacto" },
+  { name: "Neuquén Capital", province: "Neuquén", href: "/contacto" },
+  { name: "Plottier", province: "Neuquén", href: "/contacto" },
+  { name: "Centenario", province: "Neuquén", href: "/contacto" },
+  { name: "San Martín de los Andes", province: "Neuquén", href: "/contacto" },
+  { name: "Junín de los Andes", province: "Neuquén", href: "/contacto" },
+  { name: "Rincón de los Sauces", province: "Neuquén", href: "/contacto" },
+  { name: "Cipolletti", province: "Río Negro", href: "/contacto" },
+  { name: "General Roca", province: "Río Negro", href: "/contacto" },
+  { name: "Allen", province: "Río Negro", href: "/contacto" },
+  { name: "Villa Regina", province: "Río Negro", href: "/contacto" },
+  { name: "Cinco Saltos", province: "Río Negro", href: "/contacto" },
+  { name: "Bariloche", province: "Río Negro", href: "/contacto" },
 ];

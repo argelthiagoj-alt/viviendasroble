@@ -16,18 +16,19 @@ export default function PlanosSection() {
         {/* ── Header ─────────────────────────────── */}
         <AnimateOnScroll className="mb-16 text-center max-w-2xl mx-auto">
           <p className="text-[11px] tracking-[0.18em] text-roble-gold uppercase font-semibold mb-4">
-            Modelos disponibles
+            Modelos de casas
           </p>
           <h2
             id="modelos-heading"
             className="font-serif text-4xl md:text-5xl font-semibold text-roble-text leading-[1.15] mb-5"
           >
-            Elegí el modelo ideal para tu terreno y tu familia
+            Modelos de casas para familias, parejas y terrenos propios
           </h2>
           <p className="text-roble-muted text-lg leading-relaxed">
-            Seis líneas de vivienda industrializada, desde el módulo compacto
-            hasta la casa familiar. Mirá la fachada, conocé la distribución y
-            descargá el plano en PDF.
+            Casas industrializadas de distintos tamaños, desde la primera
+            vivienda compacta hasta la casa familiar más amplia. Cada modelo se
+            adapta a tu terreno y se entrega con precio cerrado. Mirá la
+            distribución y descargá el plano en PDF.
           </p>
         </AnimateOnScroll>
 
@@ -49,7 +50,9 @@ export default function PlanosSection() {
         {/* ── Footer CTA ─────────────────────────── */}
         <AnimateOnScroll delay={500} className="mt-16 text-center">
           <p className="text-roble-muted text-base mb-6">
-            Tenemos más modelos y variantes disponibles en nuestro catálogo completo.
+            Tenemos más modelos de casas y variantes en el catálogo completo,
+            incluyendo casas familiares más amplias y opciones para terrenos
+            específicos.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link

@@ -40,15 +40,17 @@ export default function HeroSection() {
 
             {/* H1 */}
             <h1 className="font-serif text-[44px] sm:text-5xl md:text-6xl lg:text-[64px] font-semibold text-white leading-[1.05] mb-6">
-              Tu casa propia en Patagonia,{" "}
+              Viviendas industrializadas en Neuquén y Río Negro,{" "}
               <span className="text-roble-gold">con precio cerrado y entrega planificada.</span>
             </h1>
 
             {/* Subtitle */}
             <p className="text-white/65 text-lg md:text-xl leading-relaxed max-w-2xl sm:mx-auto mb-9">
-              Viviendas industrializadas pensadas para durar, adaptarse a tu terreno
-              y entregarse sin sorpresas. Más de 40 años construyendo hogares para
-              familias de la región.
+              Si estás pensando en construir tu casa en Neuquén o Río Negro,
+              te ofrecemos modelos de casas pensados para tu terreno y tu
+              familia, con presupuesto cerrado y entrega planificada. Más de
+              40 años acompañando a quienes quieren construir su vivienda en
+              Patagonia.
             </p>
 
             {/* CTAs */}
