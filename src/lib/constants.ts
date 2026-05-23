@@ -29,7 +29,7 @@ export const WA_PRESUPUESTO = waLink(
 );
 
 export const NAV_LINKS = [
-  { label: "Modelos", href: "/#modelos" },
+  { label: "Modelos", href: "/planos" },
   { label: "Galería", href: "/galeria" },
   { label: "Sistemas", href: "/sistema-de-construccion" },
   { label: "Nosotros", href: "/quienes-somos" },

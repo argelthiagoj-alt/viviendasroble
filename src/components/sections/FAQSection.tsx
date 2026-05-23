@@ -1,4 +1,5 @@
 import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
+import FAQList from "@/components/ui/FAQList";
 
 export const faqItems = [
   {
@@ -108,31 +109,10 @@ export default function FAQSection() {
         </AnimateOnScroll>
 
         <AnimateOnScroll delay={100}>
-          <dl>
-            {faqItems.map((item, i) => (
-              <details
-                key={i}
-                className="group border-b border-roble-beige"
-              >
-                <summary className="flex items-center justify-between gap-4 py-5 cursor-pointer list-none text-roble-text font-medium text-base leading-snug">
-                  <span>{item.q}</span>
-                  <span
-                    className="flex-none w-6 h-6 flex items-center justify-center rounded-full border border-roble-beige text-roble-muted text-lg leading-none group-open:rotate-45 group-open:border-roble-dark group-open:text-roble-dark transition-all duration-200"
-                    aria-hidden="true"
-                  >
-                    +
-                  </span>
-                </summary>
-                <div className="pb-5 pr-10">
-                  <p className="text-roble-muted text-sm leading-relaxed">
-                    {item.a}
-                  </p>
-                </div>
-              </details>
-            ))}
-          </dl>
+          <FAQList items={faqItems} initial={5} />
         </AnimateOnScroll>
       </div>
     </section>
   );
 }
+
