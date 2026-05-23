@@ -3,7 +3,7 @@ import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
 
 export default function CTABanner() {
   return (
-    <section className="py-20 px-4 bg-roble-cream border-y border-roble-beige">
+    <section className="py-12 sm:py-20 px-5 sm:px-4 bg-roble-cream border-y border-roble-beige">
       <AnimateOnScroll className="max-w-3xl mx-auto text-center">
         <p className="text-[11px] tracking-[0.18em] text-roble-gold uppercase font-semibold mb-5">
           El primer paso es gratis

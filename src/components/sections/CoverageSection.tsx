@@ -6,21 +6,21 @@ export default function CoverageSection() {
   return (
     <section
       id="zonas"
-      className="py-24 px-4 bg-white"
+      className="py-14 sm:py-24 px-5 sm:px-4 bg-white"
       aria-labelledby="zonas-heading"
     >
       <div className="max-w-5xl mx-auto">
-        <AnimateOnScroll className="text-center max-w-2xl mx-auto mb-14">
+        <AnimateOnScroll className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
           <p className="text-[11px] tracking-[0.18em] text-roble-gold uppercase font-semibold mb-4">
             Cobertura regional
           </p>
           <h2
             id="zonas-heading"
-            className="font-serif text-4xl md:text-5xl font-semibold text-roble-text leading-[1.15] mb-5"
+            className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-roble-text leading-[1.15] mb-5"
           >
             Constructora de casas en Neuquén, Río Negro y toda la Patagonia
           </h2>
-          <p className="text-roble-muted text-lg leading-relaxed">
+          <p className="text-roble-muted text-base sm:text-lg leading-relaxed">
             Desde nuestra base en Neuquén acompañamos a familias de Neuquén, Río
             Negro, La Pampa y Chubut a construir su casa. Trabajamos con
             modelos industrializados, casas prefabricadas y opciones llave en

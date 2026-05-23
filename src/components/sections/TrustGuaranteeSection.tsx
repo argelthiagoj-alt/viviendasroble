@@ -50,21 +50,21 @@ const guarantees = [
 export default function TrustGuaranteeSection() {
   return (
     <section
-      className="py-24 px-4 bg-roble-cream"
+      className="py-14 sm:py-24 px-5 sm:px-4 bg-roble-cream"
       aria-labelledby="garantias-heading"
     >
       <div className="max-w-5xl mx-auto">
-        <AnimateOnScroll className="text-center max-w-2xl mx-auto mb-16">
+        <AnimateOnScroll className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
           <p className="text-[11px] tracking-[0.18em] text-roble-gold uppercase font-semibold mb-4">
             Tranquilidad incluida
           </p>
           <h2
             id="garantias-heading"
-            className="font-serif text-4xl md:text-5xl font-semibold text-roble-text leading-[1.15] mb-5"
+            className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-roble-text leading-[1.15] mb-5"
           >
             Construido para durar. Respaldado para tranquilizarte.
           </h2>
-          <p className="text-roble-muted text-lg leading-relaxed">
+          <p className="text-roble-muted text-base sm:text-lg leading-relaxed">
             Más de 40 años de trayectoria respaldan cada casa que entregamos.
           </p>
         </AnimateOnScroll>

@@ -10,21 +10,21 @@ export default function PlanosSection() {
     <section
       id="modelos"
       aria-labelledby="modelos-heading"
-      className="py-24 px-4 bg-white"
+      className="py-14 sm:py-24 px-5 sm:px-4 bg-white"
     >
       <div className="max-w-6xl mx-auto">
         {/* ── Header ─────────────────────────────── */}
-        <AnimateOnScroll className="mb-16 text-center max-w-2xl mx-auto">
+        <AnimateOnScroll className="mb-10 sm:mb-16 text-center max-w-2xl mx-auto">
           <p className="text-[11px] tracking-[0.18em] text-roble-gold uppercase font-semibold mb-4">
             Modelos de casas
           </p>
           <h2
             id="modelos-heading"
-            className="font-serif text-4xl md:text-5xl font-semibold text-roble-text leading-[1.15] mb-5"
+            className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-roble-text leading-[1.15] mb-5"
           >
             Modelos de casas para familias, parejas y terrenos propios
           </h2>
-          <p className="text-roble-muted text-lg leading-relaxed">
+          <p className="text-roble-muted text-base sm:text-lg leading-relaxed">
             Casas industrializadas de distintos tamaños, desde la primera
             vivienda compacta hasta la casa familiar más amplia. Cada modelo se
             adapta a tu terreno y se entrega con precio cerrado. Mirá la
@@ -32,9 +32,26 @@ export default function PlanosSection() {
           </p>
         </AnimateOnScroll>
 
-        {/* ── Grid ─────────────────────────────── */}
+        {/* ── Mobile: carrusel horizontal ──────── */}
         <div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="sm:hidden -mx-5 px-5 flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 [&::-webkit-scrollbar]:hidden [scrollbar-width:none]"
+          role="list"
+          aria-label="Modelos de vivienda — desliza horizontalmente"
+        >
+          {featured.map((model) => (
+            <div
+              key={model.id}
+              role="listitem"
+              className="snap-start shrink-0 w-[78%] xs:w-[72%]"
+            >
+              <ModelCard model={model} />
+            </div>
+          ))}
+        </div>
+
+        {/* ── Desktop: grid ───────────────────── */}
+        <div
+          className="hidden sm:grid grid-cols-2 lg:grid-cols-3 gap-6"
           role="list"
           aria-label="Modelos de vivienda prefabricada disponibles"
         >
@@ -48,7 +65,7 @@ export default function PlanosSection() {
         </div>
 
         {/* ── Footer CTA ─────────────────────────── */}
-        <AnimateOnScroll delay={500} className="mt-16 text-center">
+        <AnimateOnScroll delay={500} className="mt-10 sm:mt-16 text-center">
           <p className="text-roble-muted text-base mb-6">
             Tenemos más modelos de casas y variantes en el catálogo completo,
             incluyendo casas familiares más amplias y opciones para terrenos

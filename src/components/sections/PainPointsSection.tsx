@@ -47,20 +47,20 @@ const pains = [
 
 export default function PainPointsSection() {
   return (
-    <section className="py-24 px-4 bg-roble-cream" aria-labelledby="pain-heading">
+    <section className="py-14 sm:py-24 px-5 sm:px-4 bg-roble-cream" aria-labelledby="pain-heading">
       <div className="max-w-6xl mx-auto">
-        <AnimateOnScroll className="text-center max-w-2xl mx-auto mb-16">
+        <AnimateOnScroll className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
           <p className="text-[11px] tracking-[0.18em] text-roble-gold uppercase font-semibold mb-4">
             Construir tu casa, sin sorpresas
           </p>
           <h2
             id="pain-heading"
-            className="font-serif text-4xl md:text-5xl font-semibold text-roble-text leading-[1.15] mb-5"
+            className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-roble-text leading-[1.15] mb-5"
           >
             Construir una casa por obra tradicional tiene un problema.{" "}
             <span className="italic">Varios.</span>
           </h2>
-          <p className="text-roble-muted text-lg leading-relaxed">
+          <p className="text-roble-muted text-base sm:text-lg leading-relaxed">
             Si alguna vez quisiste construir una casa en Neuquén o Río Negro,
             ya sabés de qué hablamos. Por eso ofrecemos una alternativa clara
             para quienes buscan construir una vivienda con plazos definidos y
@@ -68,7 +68,28 @@ export default function PainPointsSection() {
           </p>
         </AnimateOnScroll>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {/* Mobile: carrusel horizontal */}
+        <div className="sm:hidden -mx-5 px-5 flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
+          {pains.map((item) => (
+            <article
+              key={item.problem}
+              className="snap-start shrink-0 w-[82%] bg-white border border-roble-beige rounded-2xl p-6"
+            >
+              <div className="w-9 h-9 flex items-center justify-center rounded-xl bg-roble-cream text-roble-dark mb-4">
+                {item.icon}
+              </div>
+              <p className="font-serif text-base font-semibold text-roble-text mb-2 leading-snug">
+                {item.problem}
+              </p>
+              <p className="text-sm text-roble-muted leading-relaxed">
+                {item.solution}
+              </p>
+            </article>
+          ))}
+        </div>
+
+        {/* Desktop: grid */}
+        <div className="hidden sm:grid grid-cols-2 gap-6">
           {pains.map((item, i) => (
             <AnimateOnScroll key={item.problem} delay={i * 80}>
               <article className="bg-white border border-roble-beige rounded-2xl p-7 h-full">

@@ -30,17 +30,17 @@ const diffs = [
 export default function DifferentialsSection() {
   return (
     <section
-      className="py-24 px-4 bg-roble-dark"
+      className="py-14 sm:py-24 px-5 sm:px-4 bg-roble-dark"
       aria-labelledby="diferenciales-heading"
     >
       <div className="max-w-6xl mx-auto">
-        <AnimateOnScroll className="text-center max-w-2xl mx-auto mb-16">
+        <AnimateOnScroll className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
           <p className="text-[11px] tracking-[0.18em] text-roble-gold uppercase font-semibold mb-4">
             Construcción industrializada
           </p>
           <h2
             id="diferenciales-heading"
-            className="font-serif text-4xl md:text-5xl font-semibold text-white leading-[1.15] mb-5"
+            className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-white leading-[1.15] mb-5"
           >
             Por qué es una forma mejor de construir
           </h2>
@@ -50,7 +50,24 @@ export default function DifferentialsSection() {
           </p>
         </AnimateOnScroll>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/8 rounded-2xl overflow-hidden border border-white/8">
+        {/* Mobile: carrusel horizontal */}
+        <div className="sm:hidden -mx-5 px-5 flex gap-3 overflow-x-auto snap-x snap-mandatory pb-4 [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
+          {diffs.map((diff) => (
+            <article
+              key={diff.title}
+              className="snap-start shrink-0 w-[78%] bg-roble-dark border border-white/10 rounded-2xl p-6"
+            >
+              <div className="w-8 h-px bg-roble-gold mb-5" aria-hidden="true" />
+              <h3 className="font-serif text-lg font-semibold text-white mb-2.5 leading-snug">
+                {diff.title}
+              </h3>
+              <p className="text-sm text-white/60 leading-relaxed">{diff.desc}</p>
+            </article>
+          ))}
+        </div>
+
+        {/* Desktop: grid */}
+        <div className="hidden sm:grid grid-cols-2 lg:grid-cols-3 gap-px bg-white/8 rounded-2xl overflow-hidden border border-white/8">
           {diffs.map((diff, i) => (
             <AnimateOnScroll key={diff.title} delay={i * 70}>
               <article className="bg-roble-dark p-8 h-full hover:bg-white/4 transition-colors duration-200">

@@ -10,19 +10,19 @@ const rows = [
 
 export default function ComparisonSection() {
   return (
-    <section className="py-24 px-4 bg-white" aria-labelledby="comparativa-heading">
+    <section className="py-14 sm:py-24 px-5 sm:px-4 bg-white" aria-labelledby="comparativa-heading">
       <div className="max-w-5xl mx-auto">
-        <AnimateOnScroll className="text-center max-w-2xl mx-auto mb-14">
+        <AnimateOnScroll className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
           <p className="text-[11px] tracking-[0.18em] text-roble-gold uppercase font-semibold mb-4">
             Comparativa honesta
           </p>
           <h2
             id="comparativa-heading"
-            className="font-serif text-4xl md:text-5xl font-semibold text-roble-text leading-[1.15] mb-5"
+            className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-roble-text leading-[1.15] mb-5"
           >
             Obra tradicional vs Viviendas Roble
           </h2>
-          <p className="text-roble-muted text-lg leading-relaxed">
+          <p className="text-roble-muted text-base sm:text-lg leading-relaxed">
             Por qué nuestro sistema reduce incertidumbre y te da control real
             sobre tu proyecto.
           </p>

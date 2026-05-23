@@ -2,16 +2,23 @@ import { WA_PRESUPUESTO } from "@/lib/constants";
 
 export default function StickyWhatsAppCTA() {
   return (
-    <div className="md:hidden fixed bottom-0 inset-x-0 z-40 px-4 pb-4 pt-2 bg-gradient-to-t from-white/90 to-transparent pointer-events-none">
+    <div
+      className="md:hidden fixed bottom-0 inset-x-0 z-40 px-4 pb-4 pt-3 pointer-events-none"
+      style={{
+        paddingBottom: "max(1rem, env(safe-area-inset-bottom))",
+        background:
+          "linear-gradient(to top, rgba(247,242,234,0.95) 0%, rgba(247,242,234,0.7) 60%, rgba(247,242,234,0) 100%)",
+      }}
+    >
       <a
         href={WA_PRESUPUESTO}
         target="_blank"
         rel="noopener noreferrer"
-        className="pointer-events-auto flex items-center justify-center gap-3 bg-[#25D366] text-white font-semibold text-sm py-4 rounded-2xl shadow-lg shadow-green-900/20 active:scale-[0.98] transition-transform"
-        aria-label="Escribinos por WhatsApp"
+        className="pointer-events-auto flex items-center justify-center gap-2.5 bg-[#25D366] text-white font-semibold text-sm py-3.5 rounded-2xl shadow-[0_10px_30px_rgba(37,211,102,0.35)] active:scale-[0.98] transition-transform"
+        aria-label="Escribinos por WhatsApp para pedir tu presupuesto"
       >
         <WhatsAppIcon />
-        Escribinos por WhatsApp
+        Consultar por WhatsApp
       </a>
     </div>
   );

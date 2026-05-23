@@ -41,3 +41,10 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Sticky WhatsApp CTA — reservar espacio sólo en mobile */
+@media (max-width: 767.98px) {
+  body {
+    padding-bottom: 88px;
+  }
+}

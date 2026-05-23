@@ -91,17 +91,17 @@ export default function FAQSection() {
   return (
     <section
       id="faq"
-      className="py-24 px-4 bg-white"
+      className="py-14 sm:py-24 px-5 sm:px-4 bg-white"
       aria-labelledby="faq-heading"
     >
       <div className="max-w-3xl mx-auto">
-        <AnimateOnScroll className="text-center mb-14">
+        <AnimateOnScroll className="text-center mb-10 sm:mb-14">
           <p className="text-[11px] tracking-[0.18em] text-roble-gold uppercase font-semibold mb-4">
             Preguntas frecuentes
           </p>
           <h2
             id="faq-heading"
-            className="font-serif text-4xl md:text-5xl font-semibold text-roble-text leading-[1.15]"
+            className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-roble-text leading-[1.15]"
           >
             Lo que más nos preguntan
           </h2>

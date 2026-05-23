@@ -7,7 +7,7 @@ const preview = galleryImages.slice(0, 4);
 
 export default function GalleryPreviewSection() {
   return (
-    <section className="py-24 px-4 bg-white" aria-labelledby="galeria-preview-heading">
+    <section className="py-14 sm:py-24 px-5 sm:px-4 bg-white" aria-labelledby="galeria-preview-heading">
       <div className="max-w-6xl mx-auto">
         <AnimateOnScroll className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-10">
           <div className="max-w-2xl">
@@ -16,7 +16,7 @@ export default function GalleryPreviewSection() {
             </p>
             <h2
               id="galeria-preview-heading"
-              className="font-serif text-4xl md:text-5xl font-semibold text-roble-text leading-[1.15] mb-4"
+              className="font-serif text-3xl sm:text-4xl md:text-5xl font-semibold text-roble-text leading-[1.15] mb-4"
             >
               Casas reales, pensadas para vivir mejor.
             </h2>

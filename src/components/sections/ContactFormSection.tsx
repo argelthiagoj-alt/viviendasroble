@@ -6,11 +6,11 @@ export default function ContactFormSection() {
   return (
     <section
       id="contacto"
-      className="py-24 px-4 bg-roble-dark"
+      className="py-14 sm:py-24 px-5 sm:px-4 bg-roble-dark"
       aria-labelledby="contacto-heading"
     >
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-14 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-9 sm:gap-14 items-start">
           {/* Left — info */}
           <AnimateOnScroll className="lg:col-span-2">
             <p className="text-[11px] tracking-[0.18em] text-roble-gold uppercase font-semibold mb-5">
@@ -18,11 +18,11 @@ export default function ContactFormSection() {
             </p>
             <h2
               id="contacto-heading"
-              className="font-serif text-4xl font-semibold text-white leading-[1.15] mb-5"
+              className="font-serif text-3xl sm:text-4xl font-semibold text-white leading-[1.15] mb-4 sm:mb-5"
             >
               Pedí tu presupuesto sin compromiso
             </h2>
-            <p className="text-white/55 text-sm leading-relaxed mb-10">
+            <p className="text-white/55 text-sm leading-relaxed mb-7 sm:mb-10">
               Completá el formulario y te respondemos en menos de 24 horas
               hábiles. También podés escribirnos directamente por WhatsApp.
             </p>
@@ -95,7 +95,7 @@ export default function ContactFormSection() {
 
           {/* Right — form */}
           <AnimateOnScroll delay={120} className="lg:col-span-3">
-            <div className="bg-white/4 border border-white/8 rounded-2xl p-7 md:p-9">
+            <div className="bg-white/4 border border-white/8 rounded-2xl p-5 sm:p-7 md:p-9">
               <ContactForm />
             </div>
           </AnimateOnScroll>
