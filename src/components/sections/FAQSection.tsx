@@ -36,7 +36,7 @@ export const faqItems = [
   },
   {
     q: "¿Una vivienda industrializada es tan resistente como una de obra tradicional?",
-    a: "Sí. Los sistemas en seco como wood frame y steel frame cumplen y superan los estándares estructurales, antisísmicos y de resistencia al viento exigidos en la región. Están específicamente pensados para el clima patagónico de Neuquén y Río Negro.",
+    a: "Es una vivienda permanente, con estructura, aislaciones e instalaciones diseñadas para uso continuo y para las condiciones de Neuquén y Río Negro. Nuestros sistemas usan estructura de madera de Eucalyptus grandis en sistema sig-zag, con anclajes resueltos punto por punto. El detalle completo de materiales de cada sistema está publicado en la página de sistema de construcción.",
   },
   {
     q: "¿Cuánto tarda en construirse una vivienda industrializada?",

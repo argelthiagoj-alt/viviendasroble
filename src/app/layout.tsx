@@ -4,6 +4,10 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import StickyWhatsAppCTA from "@/components/layout/StickyWhatsAppCTA";
+import GoogleTagManager, {
+  GoogleTagManagerNoScript,
+} from "@/components/analytics/GoogleTagManager";
+import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/seo/site";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -17,78 +21,49 @@ const inter = Inter({
   display: "swap",
 });
 
+const DEFAULT_TITLE =
+  "Casas Prefabricadas en Neuquén y Río Negro | Viviendas Roble";
+
+const DEFAULT_DESCRIPTION =
+  "Casas prefabricadas y viviendas industrializadas en Neuquén, Río Negro y Patagonia. 21 modelos de 15 a 90 m², precio cerrado y entrega planificada. Más de 40 años y +15.000 casas entregadas.";
+
 export const metadata: Metadata = {
   title: {
-    default:
-      "Viviendas Industrializadas en Neuquén y Río Negro | Viviendas Roble",
-    template: "%s | Viviendas Roble",
+    default: DEFAULT_TITLE,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "Construí tu casa con Viviendas Roble: viviendas industrializadas y casas prefabricadas con precio cerrado y entrega planificada en Neuquén, Río Negro y Patagonia. Más de 40 años de trayectoria.",
-  metadataBase: new URL("https://viviendasroble.com"),
+  description: DEFAULT_DESCRIPTION,
+  // Consolida todo el sitio bajo el dominio final: cualquier canonical
+  // relativo de una página se resuelve contra esta base, nunca contra
+  // el dominio de preview del deploy.
+  metadataBase: new URL(SITE_URL),
   alternates: { canonical: "/" },
-  applicationName: "Viviendas Roble",
-  authors: [{ name: "Viviendas Roble" }],
-  creator: "Viviendas Roble",
-  publisher: "Viviendas Roble",
+  applicationName: SITE_NAME,
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
   category: "construction",
-  keywords: [
-    // Producto/categoría — industrializadas
-    "viviendas industrializadas Neuquén",
-    "casas prefabricadas Neuquén",
-    "viviendas industrializadas Río Negro",
-    "casas prefabricadas Río Negro",
-    "casas modulares Neuquén",
-    "construcción industrializada Patagonia",
-    "viviendas con precio cerrado Neuquén",
-    "casas llave en mano Neuquén",
-    "viviendas Procrear Neuquén",
-    "casas prefabricadas Cipolletti",
-    "casas prefabricadas General Roca",
-    // Búsquedas amplias — intención general
-    "casas en Neuquén",
-    "casas en Río Negro",
-    "construir casa en Neuquén",
-    "construir casa en Río Negro",
-    "construir una casa en Patagonia",
-    "construir casa en terreno propio",
-    "empresa constructora de casas Neuquén",
-    "constructora de viviendas en Río Negro",
-    "casas familiares",
-    "casas para terreno propio",
-    "modelos de casas",
-    "casas modernas",
-    "casas económicas",
-    "casas de rápida construcción",
-    "primera vivienda",
-    "presupuesto para construir casa",
-    "cuánto cuesta construir una casa",
-  ],
   openGraph: {
-    siteName: "Viviendas Roble",
+    siteName: SITE_NAME,
     locale: "es_AR",
     type: "website",
-    url: "https://viviendasroble.com",
-    title:
-      "Viviendas Industrializadas en Neuquén y Río Negro | Viviendas Roble",
-    description:
-      "Viviendas industrializadas y casas prefabricadas con precio cerrado y entrega planificada en Neuquén, Río Negro y Patagonia.",
+    url: SITE_URL,
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
     images: [
       {
-        url: "/assets/gallery/hero-casa-roble.jpeg",
+        url: DEFAULT_OG_IMAGE,
         width: 1200,
         height: 900,
-        alt: "Vivienda industrializada Viviendas Roble entregada en Patagonia",
+        alt: "Casa prefabricada de Viviendas Roble entregada en la Patagonia",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "Viviendas Industrializadas en Neuquén y Río Negro | Viviendas Roble",
-    description:
-      "Viviendas industrializadas y casas prefabricadas con precio cerrado y entrega planificada en Neuquén, Río Negro y Patagonia.",
-    images: ["/assets/gallery/hero-casa-roble.jpeg"],
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    images: [DEFAULT_OG_IMAGE],
   },
   robots: {
     index: true,
@@ -114,7 +89,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es" className={`${playfair.variable} ${inter.variable}`}>
+      <GoogleTagManager />
       <body className="antialiased">
+        <GoogleTagManagerNoScript />
         <Navbar />
         {children}
         <Footer />

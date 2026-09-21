@@ -1,6 +1,8 @@
 import Link from "next/link";
-import { CITIES, WA_GENERAL } from "@/lib/constants";
+import { WA_GENERAL } from "@/lib/constants";
+import { cityLocations, locationPath, provinces } from "@/lib/locations";
 import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
+import { WhatsAppLink } from "@/components/analytics/TrackedLinks";
 
 export default function CoverageSection() {
   return (
@@ -28,12 +30,35 @@ export default function CoverageSection() {
           </p>
         </AnimateOnScroll>
 
+        {/* Provincias — el nivel más alto de la arquitectura geográfica */}
+        <AnimateOnScroll delay={80}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+            {provinces.map((province) => (
+              <Link
+                key={province.slug}
+                href={locationPath(province)}
+                className="group flex items-center justify-between gap-3 bg-roble-dark text-white rounded-xl px-5 py-4 hover:bg-roble-dark-hover transition-colors duration-200"
+              >
+                <span className="text-sm font-medium leading-tight">
+                  Casas prefabricadas en {province.name}
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="text-roble-gold transition-transform duration-200 group-hover:translate-x-0.5"
+                >
+                  →
+                </span>
+              </Link>
+            ))}
+          </div>
+        </AnimateOnScroll>
+
         <AnimateOnScroll delay={100}>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mb-10">
-            {CITIES.map((city) => (
+            {cityLocations.map((city) => (
               <Link
-                key={city.name}
-                href={city.href}
+                key={city.slug}
+                href={locationPath(city)}
                 className="group flex flex-col bg-roble-cream border border-roble-beige rounded-xl px-4 py-3.5 hover:border-roble-dark hover:bg-white transition-colors duration-200"
                 aria-label={`Casas prefabricadas en ${city.name}, ${city.province}`}
               >
@@ -50,17 +75,22 @@ export default function CoverageSection() {
 
         <AnimateOnScroll delay={200} className="text-center">
           <p className="text-roble-muted text-sm mb-4">
-            ¿Estás en otra localidad de Neuquén, Río Negro o Patagonia?
-            Consultanos por disponibilidad en tu zona.
+            ¿Estás en otra localidad de Neuquén, Río Negro o{" "}
+            <Link
+              href="/casas-prefabricadas/patagonia"
+              className="text-roble-dark underline underline-offset-2 hover:text-roble-gold transition-colors"
+            >
+              Patagonia
+            </Link>
+            ? Consultanos por disponibilidad en tu zona.
           </p>
-          <a
+          <WhatsAppLink
             href={WA_GENERAL}
-            target="_blank"
-            rel="noopener noreferrer"
+            location="coverage"
             className="inline-flex items-center gap-2 border border-roble-dark text-roble-dark text-sm font-medium px-6 py-3 rounded-xl hover:bg-roble-cream transition-colors duration-200"
           >
             Consultanos por tu zona
-          </a>
+          </WhatsAppLink>
         </AnimateOnScroll>
       </div>
     </section>

@@ -1,12 +1,22 @@
 import Link from "next/link";
-import { COMPANY, NAV_LINKS, CITIES, WA_GENERAL } from "@/lib/constants";
+import {
+  COMPANY,
+  NAV_LINKS,
+  CATEGORY_LINKS,
+  WA_GENERAL,
+} from "@/lib/constants";
+import { cityLocations, locationPath } from "@/lib/locations";
+import {
+  PhoneLink,
+  WhatsAppLink,
+} from "@/components/analytics/TrackedLinks";
 
 export default function Footer() {
   return (
     <footer className="bg-roble-dark text-white/70 pt-16 pb-8 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Main grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
           {/* Brand */}
           <div className="lg:col-span-1">
             <p className="font-serif text-xl font-semibold text-white mb-3">
@@ -16,15 +26,14 @@ export default function Footer() {
               Construimos viviendas industrializadas de diseño en Neuquén y
               toda la Patagonia desde 1983.
             </p>
-            <a
+            <WhatsAppLink
               href={WA_GENERAL}
-              target="_blank"
-              rel="noopener noreferrer"
+              location="footer"
               className="inline-flex items-center gap-2 text-roble-gold text-sm font-medium hover:text-roble-gold-light transition-colors duration-200"
             >
               <WhatsAppIcon />
               Escribinos por WhatsApp
-            </a>
+            </WhatsAppLink>
           </div>
 
           {/* Navigation */}
@@ -43,14 +52,25 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link
-                  href="/planos"
-                  className="text-sm hover:text-white transition-colors duration-200"
-                >
-                  Planos y modelos
-                </Link>
-              </li>
+            </ul>
+          </div>
+
+          {/* Categorías */}
+          <div>
+            <p className="text-xs tracking-widest text-white/40 uppercase font-semibold mb-4">
+              Qué construimos
+            </p>
+            <ul className="space-y-2.5">
+              {CATEGORY_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm hover:text-white transition-colors duration-200"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -60,10 +80,26 @@ export default function Footer() {
               Zonas de cobertura
             </p>
             <ul className="space-y-2.5">
-              {CITIES.map((city) => (
-                <li key={city.name}>
+              <li>
+                <Link
+                  href="/casas-prefabricadas/neuquen"
+                  className="text-sm text-white/90 hover:text-white transition-colors duration-200"
+                >
+                  Provincia de Neuquén
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/casas-prefabricadas/rio-negro"
+                  className="text-sm text-white/90 hover:text-white transition-colors duration-200"
+                >
+                  Provincia de Río Negro
+                </Link>
+              </li>
+              {cityLocations.map((city) => (
+                <li key={city.slug}>
                   <Link
-                    href={city.href}
+                    href={locationPath(city)}
                     className="text-sm hover:text-white transition-colors duration-200"
                   >
                     {city.name}
@@ -83,12 +119,13 @@ export default function Footer() {
                 <span className="block text-white/40 text-xs uppercase tracking-wide mb-0.5">
                   Teléfono
                 </span>
-                <a
+                <PhoneLink
                   href={`tel:${COMPANY.phone.replace(/\D/g, "")}`}
+                  location="footer"
                   className="hover:text-white transition-colors duration-200"
                 >
                   {COMPANY.phone}
-                </a>
+                </PhoneLink>
               </li>
               <li>
                 <span className="block text-white/40 text-xs uppercase tracking-wide mb-0.5">

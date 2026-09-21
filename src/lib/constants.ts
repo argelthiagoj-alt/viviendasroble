@@ -29,24 +29,23 @@ export const WA_PRESUPUESTO = waLink(
 );
 
 export const NAV_LINKS = [
-  { label: "Modelos", href: "/planos" },
+  { label: "Modelos", href: "/modelos" },
   { label: "Galería", href: "/galeria" },
   { label: "Sistemas", href: "/sistema-de-construccion" },
   { label: "Nosotros", href: "/quienes-somos" },
   { label: "Contacto", href: "/contacto" },
 ];
 
-export const CITIES = [
-  { name: "Neuquén Capital", province: "Neuquén", href: "/contacto" },
-  { name: "Plottier", province: "Neuquén", href: "/contacto" },
-  { name: "Centenario", province: "Neuquén", href: "/contacto" },
-  { name: "San Martín de los Andes", province: "Neuquén", href: "/contacto" },
-  { name: "Junín de los Andes", province: "Neuquén", href: "/contacto" },
-  { name: "Rincón de los Sauces", province: "Neuquén", href: "/contacto" },
-  { name: "Cipolletti", province: "Río Negro", href: "/contacto" },
-  { name: "General Roca", province: "Río Negro", href: "/contacto" },
-  { name: "Allen", province: "Río Negro", href: "/contacto" },
-  { name: "Villa Regina", province: "Río Negro", href: "/contacto" },
-  { name: "Cinco Saltos", province: "Río Negro", href: "/contacto" },
-  { name: "Bariloche", province: "Río Negro", href: "/contacto" },
+/**
+ * Categorías semánticas. Se usan en el footer para enlazar la home y
+ * las páginas internas con las landings de producto.
+ */
+export const CATEGORY_LINKS = [
+  { label: "Casas prefabricadas", href: "/casas-prefabricadas" },
+  { label: "Viviendas industrializadas", href: "/viviendas-industrializadas" },
+  { label: "Casas modulares", href: "/casas-modulares" },
+  { label: "Construcción en seco", href: "/construccion-en-seco" },
+  { label: "Casas llave en mano", href: "/casas-llave-en-mano" },
+  { label: "Casas para Patagonia", href: "/casas-para-patagonia" },
+  { label: "Planos en PDF", href: "/planos" },
 ];

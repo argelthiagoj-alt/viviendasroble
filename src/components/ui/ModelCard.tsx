@@ -1,5 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { HouseModel } from "@/lib/models";
+import {
+  FloorplanLink,
+  WhatsAppLink,
+} from "@/components/analytics/TrackedLinks";
 
 interface Props {
   model: HouseModel;
@@ -10,18 +15,24 @@ export default function ModelCard({ model }: Props) {
     <article className="group flex flex-col bg-white border border-roble-beige rounded-2xl overflow-hidden transition-shadow duration-300 hover:shadow-[0_12px_40px_rgba(0,0,0,0.09)]">
       {/* ── Preview ─────────────────────────────── */}
       <div className="relative aspect-[4/3] bg-roble-cream overflow-hidden">
-        {model.previewImage ? (
-          <Image
-            src={model.previewImage}
-            alt={`Plano arquitectónico del modelo ${model.name} — ${model.areaLabel} — Viviendas Roble`}
-            fill
-            className="object-contain p-4 transition-transform duration-500 group-hover:scale-[1.03]"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            loading="lazy"
-          />
-        ) : (
-          <BlueprintPlaceholder />
-        )}
+        <Link
+          href={`/modelos/${model.slug}`}
+          className="absolute inset-0 z-[1]"
+          aria-label={`Ver el modelo ${model.name} de ${model.areaLabel}`}
+        >
+          {model.previewImage ? (
+            <Image
+              src={model.previewImage}
+              alt={`Plano arquitectónico del modelo ${model.name} — casa prefabricada de ${model.areaLabel} — Viviendas Roble`}
+              fill
+              className="object-contain p-4 transition-transform duration-500 group-hover:scale-[1.03]"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              loading="lazy"
+            />
+          ) : (
+            <BlueprintPlaceholder />
+          )}
+        </Link>
 
         {/* Badge top-left */}
         {model.badge && (
@@ -44,7 +55,12 @@ export default function ModelCard({ model }: Props) {
             {model.specs}
           </p>
           <h3 className="font-serif text-xl font-semibold text-roble-text leading-snug">
-            {model.name}
+            <Link
+              href={`/modelos/${model.slug}`}
+              className="hover:text-roble-gold transition-colors duration-200"
+            >
+              {model.name}
+            </Link>
           </h3>
           <p className="text-sm text-roble-muted leading-relaxed">
             {model.description}
@@ -56,23 +72,32 @@ export default function ModelCard({ model }: Props) {
 
         {/* CTAs */}
         <div className="flex flex-col gap-2.5">
-          <a
+          <Link
+            href={`/modelos/${model.slug}`}
+            className="flex items-center justify-center gap-2.5 bg-roble-cream border border-roble-beige text-roble-text text-sm font-medium py-3 px-5 rounded-xl transition-colors duration-200 hover:border-roble-dark"
+          >
+            Ver modelo
+            <span aria-hidden="true">→</span>
+          </Link>
+          <FloorplanLink
             href={model.pdfHref}
             download={model.downloadName}
+            model={model}
+            fileName={model.downloadName}
             className="flex items-center justify-center gap-2.5 bg-roble-dark text-white text-sm font-medium py-3 px-5 rounded-xl transition-colors duration-200 hover:bg-roble-dark-hover"
           >
             <DownloadIcon />
             Descargar plano
-          </a>
-          <a
+          </FloorplanLink>
+          <WhatsAppLink
             href={model.whatsappMessage}
-            target="_blank"
-            rel="noopener noreferrer"
+            location="model_card"
+            model={model}
             className="flex items-center justify-center gap-2.5 border border-roble-beige text-roble-text text-sm font-medium py-3 px-5 rounded-xl transition-colors duration-200 hover:border-roble-dark hover:bg-roble-cream"
           >
             <WhatsAppIcon />
             Consultar por este modelo
-          </a>
+          </WhatsAppLink>
         </div>
       </div>
     </article>

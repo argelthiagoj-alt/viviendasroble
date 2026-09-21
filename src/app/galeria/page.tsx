@@ -1,21 +1,23 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { galleryImages } from "@/lib/gallery";
 import { WA_PRESUPUESTO } from "@/lib/constants";
+import { buildMetadata } from "@/lib/seo/metadata";
+import { breadcrumbSchema, type Crumb } from "@/lib/seo/schema";
+import { absoluteUrl } from "@/lib/seo/site";
+import JsonLd from "@/components/seo/JsonLd";
+import { WhatsAppLink } from "@/components/analytics/TrackedLinks";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import GalleryFullGrid from "@/components/ui/GalleryFullGrid";
 
-export const metadata: Metadata = {
-  title: "Galería de Obras",
+const crumbs: Crumb[] = [{ name: "Galería de obras", path: "/galeria" }];
+
+export const metadata: Metadata = buildMetadata({
+  title: "Galería de Obras: Casas Entregadas",
   description:
-    "Fotos de viviendas prefabricadas entregadas por Viviendas Roble en Neuquén, Cipolletti y Río Negro. Proyectos reales, terminaciones premium.",
-  alternates: { canonical: "/galeria" },
-  openGraph: {
-    title: "Galería de Obras — Viviendas Roble",
-    description:
-      "Proyectos reales entregados en Neuquén y Patagonia. Calidad, diseño y terminaciones premium.",
-    type: "website",
-    locale: "es_AR",
-  },
-};
+    "Fotos de casas prefabricadas entregadas por Viviendas Roble en Neuquén, Cipolletti, General Roca y la Patagonia. Proyectos reales, no renders.",
+  path: "/galeria",
+});
 
 const schema = {
   "@context": "https://schema.org",
@@ -23,30 +25,48 @@ const schema = {
   name: "Galería de Obras — Viviendas Roble",
   description:
     "Proyectos de vivienda industrializada entregados en Neuquén, Río Negro y Patagonia.",
-  url: "https://viviendasroble.com/galeria",
+  url: absoluteUrl("/galeria"),
 };
 
 export default function GaleriaPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
+      <JsonLd data={[schema, breadcrumbSchema(crumbs)]} />
 
       <main>
-        <section className="bg-roble-dark text-white pt-32 pb-16 px-4">
-          <div className="max-w-3xl mx-auto text-center">
+        <section className="bg-roble-dark text-white pt-28 pb-16 sm:pt-32 px-5 sm:px-4">
+          <div className="max-w-3xl mx-auto">
+            <Breadcrumbs items={crumbs} className="mb-7 sm:mb-9" />
             <p className="text-roble-gold text-[11px] tracking-[0.2em] uppercase font-semibold mb-5">
               Viviendas Roble · Obras
             </p>
-            <h1 className="font-serif text-5xl md:text-6xl font-semibold leading-[1.1] mb-5">
-              Proyectos entregados
+            <h1 className="font-serif text-[34px] sm:text-5xl md:text-6xl font-semibold leading-[1.08] mb-5">
+              Casas prefabricadas que ya entregamos
             </h1>
-            <p className="text-white/60 text-lg leading-relaxed max-w-xl mx-auto">
+            <p className="text-white/60 text-base sm:text-lg leading-relaxed max-w-2xl">
               Cada obra que entregamos tiene nombre y apellido. Estas son algunas
-              de las viviendas construidas en Neuquén, Cipolletti, General Roca y
-              toda la Patagonia.
+              de las viviendas construidas en{" "}
+              <Link
+                href="/casas-prefabricadas/neuquen-capital"
+                className="text-white/85 underline underline-offset-2 hover:text-roble-gold transition-colors"
+              >
+                Neuquén
+              </Link>
+              ,{" "}
+              <Link
+                href="/casas-prefabricadas/cipolletti"
+                className="text-white/85 underline underline-offset-2 hover:text-roble-gold transition-colors"
+              >
+                Cipolletti
+              </Link>
+              ,{" "}
+              <Link
+                href="/casas-prefabricadas/general-roca"
+                className="text-white/85 underline underline-offset-2 hover:text-roble-gold transition-colors"
+              >
+                General Roca
+              </Link>{" "}
+              y toda la Patagonia.
             </p>
           </div>
         </section>
@@ -62,18 +82,27 @@ export default function GaleriaPage() {
             <h2 className="font-serif text-3xl md:text-4xl font-semibold text-roble-text mb-4">
               ¿Querés una casa así?
             </h2>
-            <p className="text-roble-muted text-lg leading-relaxed mb-10">
+            <p className="text-roble-muted text-lg leading-relaxed mb-6">
               Cada proyecto es único. Contanos tu terreno y tus ideas y te
               presentamos una propuesta diseñada para vos.
             </p>
-            <a
+            <p className="text-roble-muted text-sm leading-relaxed mb-10">
+              También podés empezar mirando los{" "}
+              <Link
+                href="/modelos"
+                className="text-roble-dark underline underline-offset-2 hover:text-roble-gold transition-colors"
+              >
+                21 modelos disponibles
+              </Link>
+              .
+            </p>
+            <WhatsAppLink
               href={WA_PRESUPUESTO}
-              target="_blank"
-              rel="noopener noreferrer"
+              location="gallery"
               className="inline-flex items-center gap-3 bg-roble-dark text-white font-medium px-8 py-4 rounded-xl hover:bg-roble-dark-hover transition-colors duration-200 text-sm"
             >
               Hablemos por WhatsApp →
-            </a>
+            </WhatsAppLink>
           </div>
         </section>
       </main>

@@ -1,21 +1,24 @@
 import type { Metadata } from "next";
 import { COMPANY, WA_GENERAL, WA_PRESUPUESTO } from "@/lib/constants";
+import { buildMetadata } from "@/lib/seo/metadata";
+import { breadcrumbSchema, type Crumb } from "@/lib/seo/schema";
+import JsonLd from "@/components/seo/JsonLd";
+import {
+  PhoneLink,
+  WhatsAppLink,
+} from "@/components/analytics/TrackedLinks";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
 import ContactForm from "@/components/ui/ContactForm";
 
-export const metadata: Metadata = {
-  title: "Contacto",
+const crumbs: Crumb[] = [{ name: "Contacto", path: "/contacto" }];
+
+export const metadata: Metadata = buildMetadata({
+  title: "Contacto y Presupuesto sin Cargo",
   description:
-    "Contactate con Viviendas Roble: oficinas en Aguado 2345, Neuquén Capital. WhatsApp, teléfono y formulario de consulta. Lunes a viernes, 10 a 18 hs.",
-  alternates: { canonical: "/contacto" },
-  openGraph: {
-    title: "Contacto — Viviendas Roble",
-    description:
-      "Oficinas en Aguado 2345, Neuquén Capital. Respondemos consultas por WhatsApp, teléfono y email.",
-    type: "website",
-    locale: "es_AR",
-  },
-};
+    "Pedí tu presupuesto de casa prefabricada sin cargo. Oficinas en Aguado 2345, Neuquén Capital. WhatsApp, teléfono y formulario. Lunes a viernes de 10 a 18 hs.",
+  path: "/contacto",
+});
 
 const schema = {
   "@context": "https://schema.org",
@@ -48,9 +51,13 @@ const schema = {
   },
 };
 
+const channelLinkClass =
+  "font-serif text-base font-semibold text-roble-text hover:text-roble-gold transition-colors duration-200 leading-snug";
+
 const contactChannels = [
   {
     label: "WhatsApp",
+    kind: "whatsapp" as const,
     value: "Consultá ahora →",
     href: WA_GENERAL,
     external: true,
@@ -58,6 +65,7 @@ const contactChannels = [
   },
   {
     label: "Teléfono",
+    kind: "phone" as const,
     value: COMPANY.phone,
     href: `tel:+${COMPANY.whatsappNumber}`,
     external: false,
@@ -65,6 +73,7 @@ const contactChannels = [
   },
   {
     label: "Email",
+    kind: null,
     value: COMPANY.email,
     href: `mailto:${COMPANY.email}`,
     external: false,
@@ -72,6 +81,7 @@ const contactChannels = [
   },
   {
     label: "Horario",
+    kind: null,
     value: COMPANY.hours,
     href: null,
     external: false,
@@ -82,24 +92,23 @@ const contactChannels = [
 export default function ContactoPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
+      <JsonLd data={[schema, breadcrumbSchema(crumbs)]} />
 
       <main>
         {/* ── Hero ──────────────────────────────── */}
-        <section className="bg-roble-dark text-white pt-36 pb-20 px-4">
+        <section className="bg-roble-dark text-white pt-28 pb-20 sm:pt-32 px-5 sm:px-4">
           <div className="max-w-3xl mx-auto">
+            <Breadcrumbs items={crumbs} className="mb-7 sm:mb-9" />
             <p className="text-roble-gold text-[11px] tracking-[0.2em] uppercase font-semibold mb-6">
               Viviendas Roble · Contacto
             </p>
-            <h1 className="font-serif text-5xl md:text-6xl font-semibold leading-[1.1] mb-6">
+            <h1 className="font-serif text-[34px] sm:text-5xl md:text-6xl font-semibold leading-[1.08] mb-6">
               Hablemos.
             </h1>
-            <p className="text-white/60 text-lg leading-relaxed max-w-xl">
+            <p className="text-white/60 text-base sm:text-lg leading-relaxed max-w-xl">
               Sin compromiso, sin apuro. Contanos tu proyecto y te respondemos con
-              una propuesta real.
+              una propuesta real. El presupuesto es sin cargo y se entrega por
+              escrito.
             </p>
           </div>
         </section>
@@ -116,13 +125,24 @@ export default function ContactoPage() {
                   <span className="text-[10px] font-bold uppercase tracking-widest text-roble-muted">
                     {ch.label}
                   </span>
-                  {ch.href ? (
-                    <a
+                  {ch.href && ch.kind === "whatsapp" ? (
+                    <WhatsAppLink
                       href={ch.href}
-                      target={ch.external ? "_blank" : undefined}
-                      rel={ch.external ? "noopener noreferrer" : undefined}
-                      className="font-serif text-base font-semibold text-roble-text hover:text-roble-gold transition-colors duration-200 leading-snug"
+                      location="contact_page"
+                      className={channelLinkClass}
                     >
+                      {ch.value}
+                    </WhatsAppLink>
+                  ) : ch.href && ch.kind === "phone" ? (
+                    <PhoneLink
+                      href={ch.href}
+                      location="contact_page"
+                      className={channelLinkClass}
+                    >
+                      {ch.value}
+                    </PhoneLink>
+                  ) : ch.href ? (
+                    <a href={ch.href} className={channelLinkClass}>
                       {ch.value}
                     </a>
                   ) : (
@@ -218,14 +238,13 @@ export default function ContactoPage() {
             <p className="text-white/60 text-lg leading-relaxed mb-8">
               Escribinos por WhatsApp y respondemos en el día.
             </p>
-            <a
+            <WhatsAppLink
               href={WA_PRESUPUESTO}
-              target="_blank"
-              rel="noopener noreferrer"
+              location="contact_page"
               className="inline-flex items-center gap-3 bg-roble-gold text-roble-dark font-semibold px-8 py-4 rounded-xl hover:bg-roble-gold-light transition-colors duration-200 text-sm"
             >
               Pedir presupuesto por WhatsApp →
-            </a>
+            </WhatsAppLink>
           </AnimateOnScroll>
         </section>
       </main>

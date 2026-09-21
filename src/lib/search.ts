@@ -1,4 +1,6 @@
-import { models } from "@/lib/models";
+import { models, AREA_MIN, AREA_MAX } from "@/lib/models";
+import { indexableLocations, locationPath } from "@/lib/locations";
+import { seoLandings } from "@/lib/seo-pages";
 import { faqItems } from "@/components/sections/FAQSection";
 
 export type SearchResult = {
@@ -20,7 +22,7 @@ const pageEntries: SearchResult[] = [
     type: "page",
     title: "Sistema de Construcción — Estándar y Roble Patagónica",
     excerpt:
-      "Wood frame, steel frame, construcción en seco, aislación térmica, telgopor, machimbre, Superboard, MDF Guillermina, CAT N° 2874, apto PROCREAR, certificado. Materiales certificados, garantía incluida.",
+      "Construcción en seco, estructura de madera de Eucalyptus grandis, aislación térmica, telgopor, machimbre, Superboard, MDF Guillermina, CAT N° 2874, apto PROCREAR. Materiales certificados, garantía incluida.",
     href: "/sistema-de-construccion",
   },
   {
@@ -32,9 +34,14 @@ const pageEntries: SearchResult[] = [
   },
   {
     type: "page",
-    title: "Planos y Modelos de Casas",
-    excerpt:
-      "Catálogo de modelos desde 15 m² hasta 36 m²: Roble Módulo, Roble Studio, Roble Compact, Roble Mono, Roble Duo, Roble Esencial. Descargá el plano del modelo que te interesa.",
+    title: "Modelos de Casas Prefabricadas",
+    excerpt: `Catálogo completo de ${models.length} modelos de ${AREA_MIN} a ${AREA_MAX} m², de monoambiente a 4 dormitorios. Ficha, distribución y plano de cada uno.`,
+    href: "/modelos",
+  },
+  {
+    type: "page",
+    title: "Planos de Casas Prefabricadas en PDF",
+    excerpt: `Descargá los ${models.length} planos en PDF, sin registro y sin compromiso. Ordenados por superficie, de ${AREA_MIN} a ${AREA_MAX} m².`,
     href: "/planos",
   },
   {
@@ -64,8 +71,22 @@ function buildIndex(): SearchResult[] {
   const modelResults: SearchResult[] = models.map((m) => ({
     type: "model",
     title: `${m.name} — ${m.areaLabel}`,
-    excerpt: `${m.specs}. ${m.description}`,
-    href: `/planos#${m.id}`,
+    excerpt: `${m.bedroomsLabel}, ${m.bathroomsLabel}. ${m.specs}. ${m.description}`,
+    href: `/modelos/${m.slug}`,
+  }));
+
+  const landingResults: SearchResult[] = seoLandings.map((l) => ({
+    type: "page",
+    title: l.title,
+    excerpt: l.description,
+    href: `/${l.slug}`,
+  }));
+
+  const locationResults: SearchResult[] = indexableLocations.map((l) => ({
+    type: "page",
+    title: l.h1,
+    excerpt: l.description,
+    href: locationPath(l),
   }));
 
   const faqResults: SearchResult[] = faqItems.map((f) => ({
@@ -75,7 +96,13 @@ function buildIndex(): SearchResult[] {
     href: "/#faq",
   }));
 
-  return [...modelResults, ...faqResults, ...pageEntries];
+  return [
+    ...modelResults,
+    ...landingResults,
+    ...locationResults,
+    ...faqResults,
+    ...pageEntries,
+  ];
 }
 
 export const searchIndex = buildIndex();

@@ -1,4 +1,5 @@
 import { WA_PRESUPUESTO } from "@/lib/constants";
+import { WhatsAppLink } from "@/components/analytics/TrackedLinks";
 
 export default function StickyWhatsAppCTA() {
   return (
@@ -10,16 +11,15 @@ export default function StickyWhatsAppCTA() {
           "linear-gradient(to top, rgba(247,242,234,0.95) 0%, rgba(247,242,234,0.7) 60%, rgba(247,242,234,0) 100%)",
       }}
     >
-      <a
+      <WhatsAppLink
         href={WA_PRESUPUESTO}
-        target="_blank"
-        rel="noopener noreferrer"
+        location="floating_whatsapp"
         className="pointer-events-auto flex items-center justify-center gap-2.5 bg-[#25D366] text-white font-semibold text-sm py-3.5 rounded-2xl shadow-[0_10px_30px_rgba(37,211,102,0.35)] active:scale-[0.98] transition-transform"
         aria-label="Escribinos por WhatsApp para pedir tu presupuesto"
       >
         <WhatsAppIcon />
         Consultar por WhatsApp
-      </a>
+      </WhatsAppLink>
     </div>
   );
 }

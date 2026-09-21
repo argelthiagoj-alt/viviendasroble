@@ -1,5 +1,6 @@
 import { WA_PRESUPUESTO } from "@/lib/constants";
 import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
+import { WhatsAppLink } from "@/components/analytics/TrackedLinks";
 
 export default function CTABanner() {
   return (
@@ -16,15 +17,14 @@ export default function CTABanner() {
           tu casa. Consultá tu presupuesto para construir una casa con precio
           cerrado, sin cargo ni compromiso.
         </p>
-        <a
+        <WhatsAppLink
           href={WA_PRESUPUESTO}
-          target="_blank"
-          rel="noopener noreferrer"
+          location="final_cta"
           className="inline-flex items-center gap-3 bg-roble-dark text-white font-semibold px-8 py-4 rounded-xl hover:bg-roble-dark-hover transition-colors duration-200 text-sm"
         >
           Hablemos por WhatsApp
           <span aria-hidden="true">→</span>
-        </a>
+        </WhatsAppLink>
       </AnimateOnScroll>
     </section>
   );

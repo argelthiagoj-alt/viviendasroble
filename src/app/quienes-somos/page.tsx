@@ -1,20 +1,22 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { COMPANY, WA_GENERAL } from "@/lib/constants";
+import { buildMetadata } from "@/lib/seo/metadata";
+import { breadcrumbSchema, type Crumb } from "@/lib/seo/schema";
+import { absoluteUrl } from "@/lib/seo/site";
+import JsonLd from "@/components/seo/JsonLd";
+import { WhatsAppLink } from "@/components/analytics/TrackedLinks";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
 
-export const metadata: Metadata = {
-  title: "Quiénes Somos",
+const crumbs: Crumb[] = [{ name: "Quiénes somos", path: "/quienes-somos" }];
+
+export const metadata: Metadata = buildMetadata({
+  title: "Quiénes Somos: 40 Años en la Patagonia",
   description:
-    "Viviendas Roble: empresa familiar con más de 40 años construyendo casas prefabricadas en Neuquén y la Patagonia. +15.000 casas entregadas desde 1983.",
-  alternates: { canonical: "/quienes-somos" },
-  openGraph: {
-    title: "Quiénes Somos — Viviendas Roble",
-    description:
-      "Historia, valores y trayectoria de la empresa de construcción industrializada líder en la Patagonia.",
-    type: "website",
-    locale: "es_AR",
-  },
-};
+    "Viviendas Roble: empresa familiar fundada en 1983, con fábrica propia en Plottier y más de 15.000 casas entregadas en Neuquén, Río Negro, La Pampa y Chubut.",
+  path: "/quienes-somos",
+});
 
 const schema = {
   "@context": "https://schema.org",
@@ -22,7 +24,7 @@ const schema = {
   name: "Quiénes Somos — Viviendas Roble",
   description:
     "Historia y trayectoria de Viviendas Roble, empresa familiar de construcción industrializada con más de 40 años en la Patagonia.",
-  url: "https://viviendasroble.com/quienes-somos",
+  url: absoluteUrl("/quienes-somos"),
   mainEntity: {
     "@type": "Organization",
     name: COMPANY.name,
@@ -88,22 +90,20 @@ const values = [
 export default function QuienesSomosPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
+      <JsonLd data={[schema, breadcrumbSchema(crumbs)]} />
 
       <main>
         {/* ── Hero ──────────────────────────────── */}
-        <section className="bg-roble-dark text-white pt-36 pb-20 px-4">
+        <section className="bg-roble-dark text-white pt-28 pb-20 sm:pt-32 px-5 sm:px-4">
           <div className="max-w-3xl mx-auto">
+            <Breadcrumbs items={crumbs} className="mb-7 sm:mb-9" />
             <p className="text-roble-gold text-[11px] tracking-[0.2em] uppercase font-semibold mb-6">
               Viviendas Roble · Desde 1983
             </p>
-            <h1 className="font-serif text-5xl md:text-6xl font-semibold leading-[1.1] mb-6">
+            <h1 className="font-serif text-[34px] sm:text-5xl md:text-6xl font-semibold leading-[1.08] mb-6">
               Más de 40 años construyendo en la Patagonia.
             </h1>
-            <p className="text-white/60 text-lg leading-relaxed max-w-2xl">
+            <p className="text-white/60 text-base sm:text-lg leading-relaxed max-w-2xl">
               Somos una empresa familiar. Cada casa que entregamos tiene nombre y
               apellido — el de la familia que nos confió el sueño de su hogar propio.
             </p>
@@ -208,18 +208,41 @@ export default function QuienesSomosPage() {
             <h2 className="font-serif text-3xl md:text-4xl font-semibold mb-5 leading-snug">
               Queremos ser parte de tu historia
             </h2>
-            <p className="text-white/60 text-lg leading-relaxed mb-10">
+            <p className="text-white/60 text-lg leading-relaxed mb-6">
               Si estás pensando en construir en Patagonia, hablemos. Sin compromiso,
               sin apuro. Solo dos personas con ganas de construir algo juntos.
             </p>
-            <a
+            <p className="text-white/45 text-sm leading-relaxed mb-10">
+              Podés empezar por los{" "}
+              <Link
+                href="/modelos"
+                className="text-roble-gold underline underline-offset-2 hover:text-roble-gold-light transition-colors"
+              >
+                modelos disponibles
+              </Link>{" "}
+              o por{" "}
+              <Link
+                href="/casas-prefabricadas/neuquen"
+                className="text-roble-gold underline underline-offset-2 hover:text-roble-gold-light transition-colors"
+              >
+                nuestra cobertura en Neuquén
+              </Link>{" "}
+              y{" "}
+              <Link
+                href="/casas-prefabricadas/rio-negro"
+                className="text-roble-gold underline underline-offset-2 hover:text-roble-gold-light transition-colors"
+              >
+                Río Negro
+              </Link>
+              .
+            </p>
+            <WhatsAppLink
               href={WA_GENERAL}
-              target="_blank"
-              rel="noopener noreferrer"
+              location="about"
               className="inline-flex items-center gap-3 bg-roble-gold text-roble-dark font-semibold px-8 py-4 rounded-xl hover:bg-roble-gold-light transition-colors duration-200 text-sm"
             >
               Hablemos por WhatsApp →
-            </a>
+            </WhatsAppLink>
           </AnimateOnScroll>
         </section>
       </main>

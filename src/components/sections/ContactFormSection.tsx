@@ -1,5 +1,9 @@
 import { COMPANY, WA_GENERAL } from "@/lib/constants";
 import ContactForm from "@/components/ui/ContactForm";
+import {
+  PhoneLink,
+  WhatsAppLink,
+} from "@/components/analytics/TrackedLinks";
 import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
 
 export default function ContactFormSection() {
@@ -34,12 +38,13 @@ export default function ContactFormSection() {
                 </div>
                 <div>
                   <p className="text-white/40 text-xs uppercase tracking-wide mb-0.5">Teléfono</p>
-                  <a
+                  <PhoneLink
                     href={`tel:${COMPANY.phone.replace(/\D/g, "")}`}
+                    location="contact_section"
                     className="text-white hover:text-roble-gold transition-colors"
                   >
                     {COMPANY.phone}
-                  </a>
+                  </PhoneLink>
                 </div>
               </li>
               <li className="flex items-start gap-4">
@@ -48,14 +53,13 @@ export default function ContactFormSection() {
                 </div>
                 <div>
                   <p className="text-white/40 text-xs uppercase tracking-wide mb-0.5">WhatsApp</p>
-                  <a
+                  <WhatsAppLink
                     href={WA_GENERAL}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    location="contact_section"
                     className="text-white hover:text-roble-gold transition-colors"
                   >
                     299 453-2220
-                  </a>
+                  </WhatsAppLink>
                 </div>
               </li>
               <li className="flex items-start gap-4">

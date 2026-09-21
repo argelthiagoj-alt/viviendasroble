@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackFormSubmitSuccess } from "@/lib/analytics";
 
 type FormState = "idle" | "loading" | "success" | "error";
 
@@ -38,6 +39,10 @@ export default function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       });
+      // El lead se reporta sólo si el backend confirmó. Un error o un
+      // clic en "Enviar" que no llega a destino no es un lead.
+      // Nunca se envían los campos del formulario a Analytics.
+      if (res.ok) trackFormSubmitSuccess({ location: "contact_section" });
       setState(res.ok ? "success" : "error");
     } catch {
       setState("error");

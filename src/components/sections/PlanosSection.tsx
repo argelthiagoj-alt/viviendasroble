@@ -4,6 +4,7 @@ import { models, WHATSAPP_CUSTOM } from "@/lib/models";
 const featured = models.filter((m) => m.featured);
 import ModelCard from "@/components/ui/ModelCard";
 import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
+import { WhatsAppLink } from "@/components/analytics/TrackedLinks";
 
 export default function PlanosSection() {
   return (
@@ -73,20 +74,19 @@ export default function PlanosSection() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
-              href="/planos"
+              href="/modelos"
               className="inline-flex items-center gap-2 bg-roble-dark text-white font-medium px-8 py-4 rounded-xl hover:bg-roble-dark-hover transition-colors duration-200 text-sm"
             >
-              Ver más planos disponibles
+              Ver los 21 modelos
               <span aria-hidden="true">→</span>
             </Link>
-            <a
+            <WhatsAppLink
               href={WHATSAPP_CUSTOM}
-              target="_blank"
-              rel="noopener noreferrer"
+              location="home_models"
               className="inline-flex items-center gap-2 border border-roble-dark text-roble-dark font-medium px-8 py-4 rounded-xl hover:bg-roble-cream transition-colors duration-200 text-sm"
             >
               Consultá por un diseño a medida
-            </a>
+            </WhatsAppLink>
           </div>
         </AnimateOnScroll>
       </div>

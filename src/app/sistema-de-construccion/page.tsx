@@ -1,28 +1,23 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { WA_PRESUPUESTO } from "@/lib/constants";
+import { buildMetadata } from "@/lib/seo/metadata";
+import { breadcrumbSchema, type Crumb } from "@/lib/seo/schema";
+import JsonLd from "@/components/seo/JsonLd";
+import { WhatsAppLink } from "@/components/analytics/TrackedLinks";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
 
-export const metadata: Metadata = {
-  title: "Sistema de Construcción",
+const crumbs: Crumb[] = [
+  { name: "Sistema de construcción", path: "/sistema-de-construccion" },
+];
+
+export const metadata: Metadata = buildMetadata({
+  title: "Sistema de Construcción en Seco",
   description:
-    "Conocé los sistemas constructivos de Viviendas Roble: Sistema Estándar y Roble Patagónica (CAT N° 2874, apto PROCREAR). Materiales certificados, aislación térmica y garantía completa.",
-  alternates: { canonical: "/sistema-de-construccion" },
-  openGraph: {
-    title: "Sistema de Construcción — Viviendas Roble",
-    description:
-      "Dos sistemas industrializados, materiales certificados y garantía incluida. Aptos para el clima patagónico.",
-    type: "website",
-    locale: "es_AR",
-  },
-  keywords: [
-    "wood frame Neuquén",
-    "construcción en seco Neuquén",
-    "steel frame Patagonia",
-    "sistema constructivo prefabricado",
-    "vivienda PROCREAR Neuquén",
-    "sistema Roble Patagónica",
-  ],
-};
+    "Los dos sistemas de Viviendas Roble, material por material: Sistema Estándar y Roble Patagónica (CAT N° 2874, apto PROCREAR), con estructura de madera.",
+  path: "/sistema-de-construccion",
+});
 
 const sistemaEstandar = [
   { label: "Estructura", value: "Tirantes de Eucalyptus grandis, sistema sig-sag" },
@@ -68,18 +63,23 @@ const benefits = [
 export default function SistemaDeConstruccionPage() {
   return (
     <main>
+      <JsonLd data={breadcrumbSchema(crumbs)} />
+
       {/* ── Hero ──────────────────────────────── */}
-      <section className="bg-roble-dark text-white pt-36 pb-20 px-4">
+      <section className="bg-roble-dark text-white pt-28 pb-20 sm:pt-32 px-5 sm:px-4">
         <div className="max-w-3xl mx-auto">
+          <Breadcrumbs items={crumbs} className="mb-7 sm:mb-9" />
           <p className="text-roble-gold text-[11px] tracking-[0.2em] uppercase font-semibold mb-6">
             Viviendas Roble · Cómo construimos
           </p>
-          <h1 className="font-serif text-5xl md:text-6xl font-semibold leading-[1.1] mb-6">
+          <h1 className="font-serif text-[34px] sm:text-5xl md:text-6xl font-semibold leading-[1.08] mb-6">
             Sistemas de construcción industrializada
           </h1>
-          <p className="text-white/60 text-lg leading-relaxed max-w-2xl">
+          <p className="text-white/60 text-base sm:text-lg leading-relaxed max-w-2xl">
             No tercerizamos la fabricación. Construimos con sistemas propios,
-            materiales certificados y un equipo técnico que supervisa cada detalle.
+            materiales certificados y un equipo técnico que supervisa cada
+            detalle. Acá está el detalle completo de los dos sistemas, material
+            por material.
           </p>
         </div>
       </section>
@@ -208,18 +208,41 @@ export default function SistemaDeConstruccionPage() {
           <h2 className="font-serif text-3xl md:text-4xl font-semibold text-roble-text mb-5">
             ¿Querés saber cuál sistema se adapta a tu proyecto?
           </h2>
-          <p className="text-roble-muted text-lg leading-relaxed mb-10">
+          <p className="text-roble-muted text-lg leading-relaxed mb-6">
             Te asesoramos sin cargo. Contanos tu terreno, tu zona y tu presupuesto
             y te recomendamos la mejor opción.
           </p>
-          <a
+          <p className="text-roble-muted text-sm leading-relaxed mb-10">
+            También podés ver cómo se aplica esto en{" "}
+            <Link
+              href="/construccion-en-seco"
+              className="text-roble-dark underline underline-offset-2 hover:text-roble-gold transition-colors"
+            >
+              construcción en seco
+            </Link>
+            ,{" "}
+            <Link
+              href="/casas-para-patagonia"
+              className="text-roble-dark underline underline-offset-2 hover:text-roble-gold transition-colors"
+            >
+              viviendas para clima patagónico
+            </Link>{" "}
+            o directamente en los{" "}
+            <Link
+              href="/modelos"
+              className="text-roble-dark underline underline-offset-2 hover:text-roble-gold transition-colors"
+            >
+              modelos disponibles
+            </Link>
+            .
+          </p>
+          <WhatsAppLink
             href={WA_PRESUPUESTO}
-            target="_blank"
-            rel="noopener noreferrer"
+            location="system_page"
             className="inline-flex items-center gap-3 bg-roble-dark text-white font-medium px-8 py-4 rounded-xl hover:bg-roble-dark-hover transition-colors duration-200 text-sm"
           >
             Consultá por WhatsApp →
-          </a>
+          </WhatsAppLink>
         </AnimateOnScroll>
       </section>
     </main>

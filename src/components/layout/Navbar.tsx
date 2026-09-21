@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { NAV_LINKS, WA_PRESUPUESTO } from "@/lib/constants";
+import { WhatsAppLink } from "@/components/analytics/TrackedLinks";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -82,14 +83,13 @@ export default function Navbar() {
           </Link>
 
           {/* CTA */}
-          <a
+          <WhatsAppLink
             href={WA_PRESUPUESTO}
-            target="_blank"
-            rel="noopener noreferrer"
+            location="navbar"
             className="flex items-center gap-2 bg-roble-dark text-white text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-roble-dark-hover transition-colors duration-200"
           >
             Pedí tu presupuesto
-          </a>
+          </WhatsAppLink>
         </div>
 
         {/* ── Mobile right icons ─────────────────── */}
@@ -159,15 +159,14 @@ export default function Navbar() {
             </li>
           ))}
           <li className="pt-3">
-            <a
+            <WhatsAppLink
               href={WA_PRESUPUESTO}
-              target="_blank"
-              rel="noopener noreferrer"
+              location="navbar"
               className="block text-center bg-roble-dark text-white text-sm font-medium py-3 rounded-lg"
               onClick={() => setMenuOpen(false)}
             >
               Pedí tu presupuesto
-            </a>
+            </WhatsAppLink>
           </li>
         </ul>
       </div>

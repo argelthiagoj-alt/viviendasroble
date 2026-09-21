@@ -1,5 +1,19 @@
+export type ModelGroup = "compacto" | "mediano" | "grande";
+
 export type HouseModel = {
+  /** Anclaje histórico usado en /planos#<id>. Se conserva por compatibilidad. */
   id: string;
+  /** Slug canónico de la ficha individual: /modelos/<slug>. Único. */
+  slug: string;
+  /** Franja de superficie, usada para agrupar y sugerir modelos relacionados. */
+  group: ModelGroup;
+  /** Dormitorios. 0 = monoambiente. min/max coinciden salvo en variantes flexibles. */
+  bedroomsMin: number;
+  bedroomsMax: number;
+  bedroomsLabel: string;
+  bathroomsMin: number;
+  bathroomsMax: number;
+  bathroomsLabel: string;
   name: string;
   area: number;
   areaLabel: string;
@@ -25,6 +39,14 @@ export const models: HouseModel[] = [
   /* ── Compactos ───────────────────────────────── */
   {
     id: "roble-modulo",
+    slug: "roble-modulo-15m2",
+    group: "compacto",
+    bedroomsMin: 0,
+    bedroomsMax: 0,
+    bedroomsLabel: "Monoambiente",
+    bathroomsMin: 1,
+    bathroomsMax: 1,
+    bathroomsLabel: "1 baño",
     name: "Roble Módulo",
     area: 15,
     areaLabel: "15 m²",
@@ -43,6 +65,14 @@ export const models: HouseModel[] = [
   },
   {
     id: "roble-studio",
+    slug: "roble-studio-15-60m2",
+    group: "compacto",
+    bedroomsMin: 0,
+    bedroomsMax: 0,
+    bedroomsLabel: "Monoambiente",
+    bathroomsMin: 1,
+    bathroomsMax: 1,
+    bathroomsLabel: "1 baño",
     name: "Roble Studio",
     area: 15.6,
     areaLabel: "15.60 m²",
@@ -61,6 +91,14 @@ export const models: HouseModel[] = [
   },
   {
     id: "roble-compact",
+    slug: "roble-compact-20m2",
+    group: "compacto",
+    bedroomsMin: 0,
+    bedroomsMax: 0,
+    bedroomsLabel: "Monoambiente",
+    bathroomsMin: 1,
+    bathroomsMax: 1,
+    bathroomsLabel: "1 baño",
     name: "Roble Compact",
     area: 20,
     areaLabel: "20 m²",
@@ -79,6 +117,14 @@ export const models: HouseModel[] = [
   },
   {
     id: "roble-mono",
+    slug: "roble-mono-25m2",
+    group: "compacto",
+    bedroomsMin: 1,
+    bedroomsMax: 1,
+    bedroomsLabel: "1 dormitorio",
+    bathroomsMin: 1,
+    bathroomsMax: 1,
+    bathroomsLabel: "1 baño",
     name: "Roble Mono",
     area: 25,
     areaLabel: "25 m²",
@@ -99,6 +145,14 @@ export const models: HouseModel[] = [
   /* ── Medianos ────────────────────────────────── */
   {
     id: "roble-duo",
+    slug: "roble-duo-30m2",
+    group: "mediano",
+    bedroomsMin: 1,
+    bedroomsMax: 1,
+    bedroomsLabel: "1 dormitorio",
+    bathroomsMin: 1,
+    bathroomsMax: 1,
+    bathroomsLabel: "1 baño",
     name: "Roble Duo",
     area: 30,
     areaLabel: "30 m²",
@@ -117,6 +171,14 @@ export const models: HouseModel[] = [
   },
   {
     id: "roble-esencial",
+    slug: "roble-esencial-36m2",
+    group: "mediano",
+    bedroomsMin: 1,
+    bedroomsMax: 2,
+    bedroomsLabel: "1 a 2 dormitorios",
+    bathroomsMin: 1,
+    bathroomsMax: 1,
+    bathroomsLabel: "1 baño",
     name: "Roble Esencial",
     area: 36,
     areaLabel: "36 m²",
@@ -135,6 +197,14 @@ export const models: HouseModel[] = [
   },
   {
     id: "roble-esencial-b",
+    slug: "roble-esencial-plus-36m2",
+    group: "mediano",
+    bedroomsMin: 2,
+    bedroomsMax: 2,
+    bedroomsLabel: "2 dormitorios",
+    bathroomsMin: 1,
+    bathroomsMax: 1,
+    bathroomsLabel: "1 baño",
     name: "Roble Esencial Plus",
     area: 36,
     areaLabel: "36 m²",
@@ -153,6 +223,14 @@ export const models: HouseModel[] = [
   },
   {
     id: "roble-andes",
+    slug: "roble-andes-42m2",
+    group: "mediano",
+    bedroomsMin: 2,
+    bedroomsMax: 2,
+    bedroomsLabel: "2 dormitorios",
+    bathroomsMin: 1,
+    bathroomsMax: 1,
+    bathroomsLabel: "1 baño",
     name: "Roble Andes",
     area: 42,
     areaLabel: "42 m²",
@@ -171,6 +249,14 @@ export const models: HouseModel[] = [
   },
   {
     id: "roble-andes-a",
+    slug: "roble-andes-a-42m2",
+    group: "mediano",
+    bedroomsMin: 2,
+    bedroomsMax: 2,
+    bedroomsLabel: "2 dormitorios",
+    bathroomsMin: 1,
+    bathroomsMax: 1,
+    bathroomsLabel: "1 baño",
     name: "Roble Andes A",
     area: 42,
     areaLabel: "42 m²",
@@ -189,6 +275,14 @@ export const models: HouseModel[] = [
   },
   {
     id: "roble-andes-b",
+    slug: "roble-andes-b-42m2",
+    group: "mediano",
+    bedroomsMin: 2,
+    bedroomsMax: 2,
+    bedroomsLabel: "2 dormitorios",
+    bathroomsMin: 1,
+    bathroomsMax: 1,
+    bathroomsLabel: "1 baño",
     name: "Roble Andes B",
     area: 42,
     areaLabel: "42 m²",
@@ -207,6 +301,14 @@ export const models: HouseModel[] = [
   },
   {
     id: "roble-valle",
+    slug: "roble-valle-49m2",
+    group: "mediano",
+    bedroomsMin: 2,
+    bedroomsMax: 2,
+    bedroomsLabel: "2 dormitorios",
+    bathroomsMin: 1,
+    bathroomsMax: 1,
+    bathroomsLabel: "1 baño",
     name: "Roble Valle",
     area: 49,
     areaLabel: "49 m²",
@@ -225,6 +327,14 @@ export const models: HouseModel[] = [
   },
   {
     id: "roble-valle-b",
+    slug: "roble-valle-b-49m2",
+    group: "mediano",
+    bedroomsMin: 2,
+    bedroomsMax: 2,
+    bedroomsLabel: "2 dormitorios",
+    bathroomsMin: 1,
+    bathroomsMax: 1,
+    bathroomsLabel: "1 baño",
     name: "Roble Valle B",
     area: 49,
     areaLabel: "49 m²",
@@ -245,6 +355,14 @@ export const models: HouseModel[] = [
   /* ── Grandes ─────────────────────────────────── */
   {
     id: "roble-sierra",
+    slug: "roble-sierra-56m2",
+    group: "grande",
+    bedroomsMin: 2,
+    bedroomsMax: 3,
+    bedroomsLabel: "2 a 3 dormitorios",
+    bathroomsMin: 1,
+    bathroomsMax: 1,
+    bathroomsLabel: "1 baño",
     name: "Roble Sierra",
     area: 56,
     areaLabel: "56 m²",
@@ -263,6 +381,14 @@ export const models: HouseModel[] = [
   },
   {
     id: "roble-bosque",
+    slug: "roble-bosque-57m2",
+    group: "grande",
+    bedroomsMin: 3,
+    bedroomsMax: 3,
+    bedroomsLabel: "3 dormitorios",
+    bathroomsMin: 1,
+    bathroomsMax: 1,
+    bathroomsLabel: "1 baño",
     name: "Roble Bosque",
     area: 57,
     areaLabel: "57 m²",
@@ -281,6 +407,14 @@ export const models: HouseModel[] = [
   },
   {
     id: "roble-lago",
+    slug: "roble-lago-64m2",
+    group: "grande",
+    bedroomsMin: 3,
+    bedroomsMax: 3,
+    bedroomsLabel: "3 dormitorios",
+    bathroomsMin: 1,
+    bathroomsMax: 1,
+    bathroomsLabel: "1 baño",
     name: "Roble Lago",
     area: 64,
     areaLabel: "64 m²",
@@ -299,6 +433,14 @@ export const models: HouseModel[] = [
   },
   {
     id: "roble-lago-b",
+    slug: "roble-lago-b-64m2",
+    group: "grande",
+    bedroomsMin: 3,
+    bedroomsMax: 3,
+    bedroomsLabel: "3 dormitorios",
+    bathroomsMin: 1,
+    bathroomsMax: 1,
+    bathroomsLabel: "1 baño",
     name: "Roble Lago B",
     area: 64,
     areaLabel: "64 m²",
@@ -317,6 +459,14 @@ export const models: HouseModel[] = [
   },
   {
     id: "roble-cordillera",
+    slug: "roble-cordillera-69m2",
+    group: "grande",
+    bedroomsMin: 3,
+    bedroomsMax: 3,
+    bedroomsLabel: "3 dormitorios",
+    bathroomsMin: 1,
+    bathroomsMax: 1,
+    bathroomsLabel: "1 baño",
     name: "Roble Cordillera",
     area: 69,
     areaLabel: "69 m²",
@@ -335,6 +485,14 @@ export const models: HouseModel[] = [
   },
   {
     id: "roble-cumbre",
+    slug: "roble-cumbre-72m2",
+    group: "grande",
+    bedroomsMin: 3,
+    bedroomsMax: 3,
+    bedroomsLabel: "3 dormitorios",
+    bathroomsMin: 1,
+    bathroomsMax: 2,
+    bathroomsLabel: "1 a 2 baños",
     name: "Roble Cumbre",
     area: 72,
     areaLabel: "72 m²",
@@ -353,6 +511,14 @@ export const models: HouseModel[] = [
   },
   {
     id: "roble-cumbre-b",
+    slug: "roble-cumbre-b-72m2",
+    group: "grande",
+    bedroomsMin: 3,
+    bedroomsMax: 3,
+    bedroomsLabel: "3 dormitorios",
+    bathroomsMin: 1,
+    bathroomsMax: 2,
+    bathroomsLabel: "1 a 2 baños",
     name: "Roble Cumbre B",
     area: 72,
     areaLabel: "72 m²",
@@ -371,6 +537,14 @@ export const models: HouseModel[] = [
   },
   {
     id: "roble-nahuel",
+    slug: "roble-nahuel-80m2",
+    group: "grande",
+    bedroomsMin: 3,
+    bedroomsMax: 3,
+    bedroomsLabel: "3 dormitorios",
+    bathroomsMin: 2,
+    bathroomsMax: 2,
+    bathroomsLabel: "2 baños",
     name: "Roble Nahuel",
     area: 80,
     areaLabel: "80 m²",
@@ -389,6 +563,14 @@ export const models: HouseModel[] = [
   },
   {
     id: "roble-pehuen",
+    slug: "roble-pehuen-90m2",
+    group: "grande",
+    bedroomsMin: 3,
+    bedroomsMax: 4,
+    bedroomsLabel: "3 a 4 dormitorios",
+    bathroomsMin: 2,
+    bathroomsMax: 2,
+    bathroomsLabel: "2 baños",
     name: "Roble Pehuén",
     area: 90,
     areaLabel: "90 m²",
@@ -410,3 +592,43 @@ export const models: HouseModel[] = [
 export const WHATSAPP_CUSTOM = wa(
   "Hola, busco una vivienda personalizada y me gustaría conocer las opciones disponibles."
 );
+
+
+/* ── Helpers de catálogo ─────────────────────────── */
+
+export function getModelBySlug(slug: string): HouseModel | undefined {
+  return models.find((m) => m.slug === slug);
+}
+
+/** Modelos ordenados de menor a mayor superficie. */
+export const modelsByArea: HouseModel[] = [...models].sort(
+  (a, b) => a.area - b.area
+);
+
+/**
+ * Sugerencias para la ficha de un modelo: primero los de la misma franja,
+ * después los más cercanos en superficie. Nunca se incluye a sí mismo.
+ */
+export function relatedModels(model: HouseModel, limit = 3): HouseModel[] {
+  const others = models.filter((m) => m.slug !== model.slug);
+  const sameGroup = others.filter((m) => m.group === model.group);
+  const rest = others.filter((m) => m.group !== model.group);
+
+  const byAreaDistance = (a: HouseModel, b: HouseModel) =>
+    Math.abs(a.area - model.area) - Math.abs(b.area - model.area);
+
+  return [...sameGroup.sort(byAreaDistance), ...rest.sort(byAreaDistance)].slice(
+    0,
+    limit
+  );
+}
+
+/** Modelos con N dormitorios (contempla rangos como "1 a 2 dormitorios"). */
+export function modelsWithBedrooms(n: number): HouseModel[] {
+  return modelsByArea.filter(
+    (m) => m.bedroomsMin <= n && m.bedroomsMax >= n
+  );
+}
+
+export const AREA_MIN = Math.min(...models.map((m) => m.area));
+export const AREA_MAX = Math.max(...models.map((m) => m.area));
